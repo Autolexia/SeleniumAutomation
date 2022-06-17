@@ -1,36 +1,23 @@
-using CoreProject.CoreSelenium;
-using CoreProject.CoreSelenium.WebDriver;
+using PracticeProject.TestArtifacts;
 using System;
 using Xunit;
 
 namespace PracticeProject
 {
-    public class BasicGoogleTestWithFramework : IDisposable
+    public class BasicGoogleTestWithFramework : Google, IDisposable
     {
-        WebDriverSetup driverSetup;
-        Artifact artifact;
-
-        public TestArtifact Input { get; }
-
-        public BasicGoogleTestWithFramework()
-        {
-            driverSetup = new WebDriverSetup("https://www.google.co.za");
-            artifact = new Artifact(driverSetup.Driver);
-
-            Input = artifact.Create("input");
-        }
-
         [Fact]
-        public void Test1()
+        public void BasicSearch()
         {
-            Input.Type("This is a test");
+            Input.SendKeys("This is a test");
+            GoogleSearchButton.Click();
 
-            Assert.True(Input.GetValue() == "This is a test");
+            Assert.True(AllTabOnResultPage.Exists());
         }
 
         public void Dispose()
         {
-            driverSetup.Driver.Quit();
+            DriverSetup.Driver.Quit();
         }
     }
 }

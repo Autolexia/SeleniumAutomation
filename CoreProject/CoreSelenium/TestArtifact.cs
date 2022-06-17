@@ -11,7 +11,7 @@ namespace CoreProject.CoreSelenium
 
         public void TryClick() => new TryClick(ActionData.Selector, ActionData.Driver);
 
-        public void Type(string value) => new Type(ActionData.Selector, ActionData.Driver, value);
+        public void SendKeys(string value) => new SendKeys(ActionData.Selector, ActionData.Driver, value);
 
         public bool Exists() => new Exists(ActionData.Selector, ActionData.Driver).IsTrue;
 

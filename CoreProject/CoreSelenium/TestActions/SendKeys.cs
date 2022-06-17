@@ -3,9 +3,9 @@ using OpenQA.Selenium.Interactions;
 
 namespace CoreProject.CoreSelenium.TestActions
 {
-    internal class Type : BaseActions
+    internal class SendKeys : BaseActions
     {
-        public Type(string selector, IWebDriver driver, string value) : base(selector, driver)
+        public SendKeys(string selector, IWebDriver driver, string value) : base(selector, driver)
         {
             new Actions(ActionData.Driver)
                 .SendKeys(Element(), value)
